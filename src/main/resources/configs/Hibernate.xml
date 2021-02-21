@@ -1,18 +1,19 @@
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">"jdbc:mysql://localhost:3306/hibernate</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">IMBABOTGg2A7Vyz</property>
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/postgres?currentSchema=hiber</property>
+        <property name="connection.username">postgres</property>
+        <property name="connection.password">admin</property>
         <property name="connection.pool_size">8</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="dialect">org.hibernate.dialect.PostgreSQL94Dialect</property>
         <property name="show_sql">true</property>
         <property name="current_session_context_class">thread</property>
 
-        <mapping class="ru.geekbrains.spring1.lesson3.dz.Customers"></mapping>
-        <mapping class="ru.geekbrains.spring1.lesson3.dz.Items"></mapping>
+        <mapping class="ru.geekbrains.spring1.lesson3.dz.Items"/>
+        <mapping class="ru.geekbrains.spring1.lesson3.dz.Customers"/>
     </session-factory>
 </hibernate-configuration>
