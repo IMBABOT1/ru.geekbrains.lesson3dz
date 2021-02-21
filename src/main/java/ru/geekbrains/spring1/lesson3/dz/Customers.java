@@ -8,5 +8,24 @@ import javax.persistence.Id;
 public class Customers {
     @Id
     private Long ID;
-    private int name;
+    private String name;
+
+    public Customers(){
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getID() {
+        return ID;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
