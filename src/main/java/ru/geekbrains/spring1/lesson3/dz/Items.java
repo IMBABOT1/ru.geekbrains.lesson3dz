@@ -1,16 +1,23 @@
 package ru.geekbrains.spring1.lesson3.dz;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "items")
 public class Items {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long ID;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "price")
     private int price;
+
+    @ManyToOne
+    @JoinColumn(name = "item_id")
+    private Customers customers;
 
     public Items(){
 
