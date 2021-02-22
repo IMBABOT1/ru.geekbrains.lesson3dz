@@ -1,17 +1,19 @@
 package ru.geekbrains.spring1.lesson3.dz;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Customers {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long ID;
+
+    @Column(name = "name")
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "customers")
     private List<Items> list;
 
     public Customers(){
