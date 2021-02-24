@@ -8,7 +8,7 @@ public class MainApp {
 
 
     private static long client = 1;
-    private static String good = "good 1";
+    private static String good = "good 4";
 
     public static void main(String[] args) {
         PrepareDataApp.forcePrepareData();
@@ -24,19 +24,18 @@ public class MainApp {
             session.beginTransaction();
 
 
-            Customer customers = session.get(Customer.class, client);
-            for (Goods g : customers.getList()){
-                if (client == 1){
-                    System.out.println(customers.getName() + " " + "купил " + g.getName());
-                }
-                if (client == 2){
-                    System.out.println(customers.getName() + " " + "купил " + g.getName());
-                }
+            for (long i = 1; i <= 2  ; i++) {
+                Customer customers = session.get(Customer.class, i);
 
-                if (g.getName().equals(good)){
-                    System.out.println(good + " " + "купили " + customers.getName());
-                }
+                for (Goods g : customers.getList()) {
+                    if (client == customers.getID()) {
+                        System.out.println(customers.getName() + " " + "купил " + g.getName());
+                    }
 
+                    if (g.getName().equals(good)) {
+                        System.out.println(good + " " + "купил " + customers.getName());
+                    }
+                }
             }
 
 
