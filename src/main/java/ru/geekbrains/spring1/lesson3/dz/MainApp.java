@@ -7,7 +7,8 @@ import org.hibernate.cfg.Configuration;
 public class MainApp {
 
 
-    private static long client = 2;
+    private static long client = 1;
+    private static String good = "good 1";
 
     public static void main(String[] args) {
         PrepareDataApp.forcePrepareData();
@@ -21,8 +22,9 @@ public class MainApp {
         try {
             session = factory.getCurrentSession();
             session.beginTransaction();
-            Customer customers = session.get(Customer.class, client);
 
+
+            Customer customers = session.get(Customer.class, client);
             for (Goods g : customers.getList()){
                 if (client == 1){
                     System.out.println(customers.getName() + " " + "купил " + g.getName());
@@ -30,7 +32,13 @@ public class MainApp {
                 if (client == 2){
                     System.out.println(customers.getName() + " " + "купил " + g.getName());
                 }
+
+                if (g.getName().equals(good)){
+                    System.out.println(good + " " + "купили " + customers.getName());
+                }
+
             }
+
 
             session.getTransaction().commit();
         }finally {
