@@ -18,3 +18,6 @@ INSERT INTO goods (name, cost, customers_id) VALUES
 
 
 
+
+
+

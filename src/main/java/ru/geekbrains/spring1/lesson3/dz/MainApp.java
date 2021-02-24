@@ -3,12 +3,17 @@ package ru.geekbrains.spring1.lesson3.dz;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.sql.Select;
 
 public class MainApp {
 
 
     private static final long client = 2;
     private static final String good = "good 1";
+
+    private static final long deleteGoods = 1;
+
+    private static final long deleteCustomer = 1;
 
     private static final long CUSTOMERS_LENGTH = 4;
 
@@ -27,15 +32,14 @@ public class MainApp {
 
 
             for (long i = 1; i <= CUSTOMERS_LENGTH  ; i++) {
-                Customer customers = session.get(Customer.class, i);
 
+                Customer customers = session.get(Customer.class, i);
                 for (Goods g : customers.getList()) {
                     if (client == customers.getID()) {
                         System.out.println(customers.getName() + " " + "купил " + g.getName());
                     }
                 }
             }
-
 
             for (long i = 1; i <= CUSTOMERS_LENGTH  ; i++) {
                 Customer customers = session.get(Customer.class, i);
@@ -45,9 +49,25 @@ public class MainApp {
                     }
                 }
             }
-
-
             session.getTransaction().commit();
+
+
+            session = factory.getCurrentSession();
+            session.beginTransaction();
+            Goods goods = session.get(Goods.class, deleteGoods);
+            session.delete(session.get(Goods.class,  deleteGoods));
+            session.getTransaction().commit();
+
+            session = factory.getCurrentSession();
+            session.beginTransaction();
+            Customer customers = session.get(Customer.class, 1l);
+                for (Goods g : customers.getList()) {
+                    System.out.println(g.getName());
+            }
+            session.getTransaction().commit();
+
+
+
         }finally {
             factory.close();
         }
