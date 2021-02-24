@@ -18,7 +18,7 @@ public class Customer {
         return list;
     }
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE)
     private List<Goods> list;
 
     public Customer(){
