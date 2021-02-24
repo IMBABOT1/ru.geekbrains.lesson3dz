@@ -13,7 +13,9 @@
         <property name="show_sql">false</property>
         <property name="current_session_context_class">thread</property>
 
-        <mapping class="ru.geekbrains.spring1.lesson3.dz.Customers"/>
         <mapping class="ru.geekbrains.spring1.lesson3.dz.Goods"/>
+        <mapping class="ru.geekbrains.spring1.lesson3.dz.Customer"/>
+        <mapping class="ru.geekbrains.spring1.lesson3.dz.Student"/>
+        <mapping class="ru.geekbrains.spring1.lesson3.dz.University"/>
     </session-factory>
 </hibernate-configuration>

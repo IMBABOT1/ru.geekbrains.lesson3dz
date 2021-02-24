@@ -10,9 +10,9 @@ import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
 public class PrepareDataApp {
-    public static void forcePrepareData(){
+    public static void forcePrepareData() {
         SessionFactory factory = new Configuration()
-                .configure("configs/Hibernate.cfg.xml")
+                .configure("configs/hibernate.cfg.xml")
                 .buildSessionFactory();
         Session session = null;
         try {
@@ -21,17 +21,17 @@ public class PrepareDataApp {
             session.beginTransaction();
             session.createNativeQuery(sql).executeUpdate();
             session.getTransaction().commit();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         } finally {
             factory.close();
-            if (session != null){
+            if (session != null) {
                 session.close();
             }
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         forcePrepareData();
     }
 }

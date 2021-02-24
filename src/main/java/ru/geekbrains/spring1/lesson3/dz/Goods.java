@@ -8,7 +8,7 @@ public class Goods {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int ID;
+    private Long ID;
 
     @Column(name = "name")
     private String name;
@@ -16,14 +16,14 @@ public class Goods {
     private int cost;
 
     @ManyToOne
-    @JoinColumn(name = "goods_id")
-    private Customers customer;
+    @JoinColumn(name = "customers_id")
+    private Customer customer;
 
     public Goods(){
 
     }
 
-    public int getID() {
+    public Long getID() {
         return ID;
     }
 
@@ -35,7 +35,7 @@ public class Goods {
         return cost;
     }
 
-    public void setID(int ID) {
+    public void setID(Long ID) {
         this.ID = ID;
     }
 

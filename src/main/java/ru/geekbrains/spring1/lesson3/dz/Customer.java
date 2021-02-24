@@ -5,11 +5,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "customers")
-public class Customers {
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int ID;
+    private Long ID;
     @Column(name = "name")
     private String name;
 
@@ -21,11 +21,11 @@ public class Customers {
     @OneToMany(mappedBy = "customer")
     private List<Goods> list;
 
-    public Customers(){
+    public Customer(){
 
     }
 
-    public int getID() {
+    public Long getID() {
         return ID;
     }
 
@@ -33,7 +33,7 @@ public class Customers {
         return name;
     }
 
-    public void setID(int ID) {
+    public void setID(Long ID) {
         this.ID = ID;
     }
 

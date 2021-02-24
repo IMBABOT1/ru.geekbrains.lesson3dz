@@ -18,12 +18,11 @@ public class MainApp {
         try {
             session = factory.getCurrentSession();
             session.beginTransaction();
-            Customers customers = session.get(Customers.class, 1L);
-            session.getTransaction().commit();
-            System.out.println(customers);
-            System.out.println("Goods: ");
-            for(Goods g : customers.getList()){
-                System.out.println(g.getID());
+            Customer customers = session.get(Customer.class, 1l);
+           // University university = session.get(University.class, 1l);
+            System.out.println("Customers: ");
+            for (Goods g: customers.getList()){
+                System.out.println(g.getName());
             }
 
             session.getTransaction().commit();
