@@ -46,4 +46,9 @@ public class Goods {
     public void setCost(int cost) {
         this.cost = cost;
     }
+
+    @Override
+    public String toString() {
+        return name + " " + cost;
+    }
 }

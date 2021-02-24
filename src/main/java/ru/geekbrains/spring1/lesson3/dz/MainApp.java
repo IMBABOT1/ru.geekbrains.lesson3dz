@@ -6,6 +6,9 @@ import org.hibernate.cfg.Configuration;
 
 public class MainApp {
 
+
+    private static long client = 2;
+
     public static void main(String[] args) {
         PrepareDataApp.forcePrepareData();
 
@@ -18,11 +21,15 @@ public class MainApp {
         try {
             session = factory.getCurrentSession();
             session.beginTransaction();
-            Customer customers = session.get(Customer.class, 1l);
-           // University university = session.get(University.class, 1l);
-            System.out.println("Customers: ");
-            for (Goods g: customers.getList()){
-                System.out.println(g.getName());
+            Customer customers = session.get(Customer.class, client);
+
+            for (Goods g : customers.getList()){
+                if (client == 1){
+                    System.out.println(customers.getName() + " " + "купил " + g.getName());
+                }
+                if (client == 2){
+                    System.out.println(customers.getName() + " " + "купил " + g.getName());
+                }
             }
 
             session.getTransaction().commit();
